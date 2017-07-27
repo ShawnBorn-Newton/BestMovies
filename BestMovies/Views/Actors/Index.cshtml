@@ -3,49 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Really Good Actors</h2>
 
-<h2>Index</h2>
+    <h2>
+        @Html.ActionLink("Create New", "Create")
+    </h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AtorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DOB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th></th>
-    </tr>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-3 thumbnail">
+                <h1>
+                    Actor's Name: @Html.DisplayFor(modelItem => item.AtorName)
+                </h1>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AtorName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nationality)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActorID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ActorID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ActorID })
-        </td>
-    </tr>
-}
+                <h4>
+                    Born on: @Html.DisplayFor(modelItem => item.DOB)
+                </h4>
 
-</table>
+                <h4>
+                    Actor's Natioinality is: @Html.DisplayFor(modelItem => item.Nationality)
+                </h4>
+                <h6>
+                    Gender: @Html.DisplayFor(modelItem => item.Gender)
+                </h6>
+                <p id="line">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ActorID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ActorID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ActorID })
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+
